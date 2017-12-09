@@ -1,6 +1,6 @@
 //script per caricare il titolo
 var polo = getQueryVariable_q(window.location.href);
-if(polo !== null) {
+if(polo != null) {
     var name = "Aule libere presso: " + polo;    
 } else {
     var name = "Tentativo di utilizzo geolocalizzazione";
@@ -16,6 +16,7 @@ var sede = getQueryVariable_q(window.location.href);
 var geoloc = getQueryVariable_geoloc(window.location.href);
 if (sede != null) {
     sede = sede.replace("%20", " ");
+    sede = str.toLowerCase();
     switch (sede) {
         case "povo": sede = "E0503"; break;
         case "economia": sede = "E0101"; break;
