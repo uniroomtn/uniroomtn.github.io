@@ -49,7 +49,7 @@ if (sede != null) {
 } 
 else if(geoloc != null)
 {
-    /*var getPosition = function (options) {
+    var getPosition = function (options) {
         return new Promise(function (resolve, reject) {
             navigator.geolocation.getCurrentPosition(resolve, reject, options);
         });
@@ -85,7 +85,7 @@ else if(geoloc != null)
     })
     .catch((err) => {
         console.error("Errore nella geolocalizzazione" + err.message);
-    });		*/
+    });		
 }
 else {
     location.href = "index.html?q=dc";
