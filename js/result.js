@@ -16,7 +16,7 @@ var sede = getQueryVariable_q(window.location.href);
 var geoloc = getQueryVariable_geoloc(window.location.href);
 if (sede != null) {
     sede = sede.replace("%20", " ");
-    sede = str.toLowerCase();
+    sede = sede.toLowerCase();
     switch (sede) {
         case "povo": sede = "E0503"; break;
         case "economia": sede = "E0101"; break;
