@@ -60,7 +60,7 @@ else if(geoloc != null)
         document.getElementById("nome_polo").innerHTML = "Ricerca in corso...";
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
-        fetch("https://uniroomtn.herokuapp.com/room?lat="+ lat + "&&lng=" + lng)
+        fetch("http://uniroomtn.herokuapp.com/room?lat="+ lat + "&&lng=" + lng)
         .then(ris => {
             let data = ris.json();
             data.then(result => {
