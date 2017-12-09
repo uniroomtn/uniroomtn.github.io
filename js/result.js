@@ -47,7 +47,7 @@ if (sede != null) {
         }        
     });
 } 
-else if(geoloc != null && sede == null)
+else if(geoloc != null && sede == null && false)
 {
     var getPosition = function (options) {
         return new Promise(function (resolve, reject) {
