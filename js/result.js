@@ -65,10 +65,11 @@ else if(geoloc != null)
             let data = ris.json();
             data.then(result => {
                 var name;
-                if(result[0].sede != null)
-                    name = "Aule libere presso: " + result[0].sede;
+                if( result == "Nessuna aula disponibile al momento")
+                	name = "Nessuna aula libera vicino a te"
+                    
                 else
-                    name = "Nessuna aula libera vicino a te".
+                    name = "Aule libere presso: " + result[0].sede;
                 document.getElementById("nome_polo").innerHTML = name;
                 $.each(result, function (key, val) 
                     {
