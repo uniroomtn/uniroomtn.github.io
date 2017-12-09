@@ -66,8 +66,7 @@ else if(geoloc != null)
             data.then(result => {
                 var name;
                 if( result == "Nessuna aula disponibile al momento")
-                	name = "Nessuna aula libera vicino a te"
-                    
+                	name = "Nessuna aula libera vicino a te"      
                 else
                     name = "Aule libere presso: " + result[0].sede;
                 document.getElementById("nome_polo").innerHTML = name;
