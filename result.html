@@ -242,9 +242,10 @@
 	<script type="text/javascript">
 		//script per caricare il titolo
 		var polo = getQueryVariable_q(window.location.href);
+		console.log(polo);
 		//polo = polo.replace("%20", " ");
 		if(polo != null) {
-			polo = polo.replace("%20", " ");
+			polo = polo.replace("+", " ");
 			var name = "Risultati per: " + polo;
 			console.log("Oh si!");
 			
