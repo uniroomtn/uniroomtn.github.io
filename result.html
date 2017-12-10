@@ -169,9 +169,10 @@
 		//script per creare la tabella degli orari
 		var frase = getQueryVariable_q(window.location.href);
 		var geoloc = getQueryVariable_geoloc(window.location.href);
+		console.log("Frase: "+frase);
 		if (frase != null) {
 			
-			console.log("Frase: "+frase);
+			
 			url = "https://uniroomtn.herokuapp.com/nl?frase="+ frase;
 			$.getJSON(url, function (data) {
 				if(data == "Nessuna aula disponibile al momento"){
