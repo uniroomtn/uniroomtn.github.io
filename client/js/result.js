@@ -1,6 +1,6 @@
 //script per caricare il titolo
 var polo = getQueryVariable_q(window.location.href);
-if(polo != null) {
+if(polo !== null) {
     var name = "Aule libere presso: " + polo;    
 } else {
     var name = "Tentativo di utilizzo geolocalizzazione";
@@ -15,8 +15,7 @@ let url;
 var sede = getQueryVariable_q(window.location.href);
 var geoloc = getQueryVariable_geoloc(window.location.href);
 if (sede != null) {
-    str = sede.replace("%20", " ");
-    sede = str.toLowerCase();
+    sede = sede.replace("%20", " ");
     switch (sede) {
         case "povo": sede = "E0503"; break;
         case "economia": sede = "E0101"; break;
@@ -31,7 +30,7 @@ if (sede != null) {
         case "socio": sede = "E0601"; break;
         case "help": location.href = "index.html?q=help";
     }
-    url = "https://uniroomtn.herokuapp.com/sede/"+ sede;
+    url = "http://localhost:8080/sede/"+ sede;
     $.getJSON(url, function (data) {
         if((data == "Nessuna aula disponibile al momento")||(data == null)||(data == undefined)){
             $("#command_table").append("<tr><td>Nessuna aula libera</td><td></td><td></td></tr>");
@@ -48,7 +47,7 @@ if (sede != null) {
         }        
     });
 } 
-else if(geoloc != null && sede == null)
+else if(geoloc != null)
 {
     var getPosition = function (options) {
         return new Promise(function (resolve, reject) {
@@ -61,27 +60,32 @@ else if(geoloc != null && sede == null)
         document.getElementById("nome_polo").innerHTML = "Ricerca in corso...";
         let lat = position.coords.latitude;
         let lng = position.coords.longitude;
-        fetch("https://uniroomtn.herokuapp.com/room?lat="+ lat + "&&lng=" + lng)
+        fetch("http://localhost:8080/room?lat="+ lat + "&&lng=" + lng)
         .then(ris => {
             let data = ris.json();
             data.then(result => {
-                var name;
-                if( result == "Nessuna aula disponibile al momento")
-                	name = "Nessuna aula libera vicino a te"      
-                else
-                    name = "Aule libere presso: " + result[0].sede;
-                document.getElementById("nome_polo").innerHTML = name;
-                $.each(result, function (key, val) 
-                    {
-                    if (val.orario[0]) 
-                    {
-                        $("#command_table").append("<tr><td>" + val.NomeAula + "</td><td>ora</td><td>" + val.orario[0].from + "</td></tr>");
-                    }
-                    else 
-                    {
-                        $("#command_table").append("<tr><td>" + val.NomeAula + "</td><td>ora</td><td>fine giornata</td></tr>");
-                    }
-                });
+                var testo = document.getElementById("nome_polo");
+                if(result === "Nessuna aula disponibile al momento") {
+                    var name = "Nessuna aula libera nel polo a te più vicino";
+                    testo.innerHTML = name;
+                    testo.style.color = "red";
+                    document.getElementById('table_div').hidden = true;
+                } else {
+                    var name = "Aule libere presso: " + result[0].sede;     
+                    testo.innerHTML = name;              
+                    $.each(result, function (key, val) 
+                        {
+                        if (val.orario[0]) 
+                        {
+                            $("#command_table").append("<tr><td>" + val.NomeAula + "</td><td>ora</td><td>" + val.orario[0].from + "</td></tr>");
+                        }
+                        else 
+                        {
+                            $("#command_table").append("<tr><td>" + val.NomeAula + "</td><td>ora</td><td>fine giornata</td></tr>");
+                        }
+                    });
+                }
+                
             })
             .catch((err) => {
                 console.error(err.message);
