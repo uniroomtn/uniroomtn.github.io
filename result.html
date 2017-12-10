@@ -172,7 +172,7 @@
 		if (frase != null) {
 			
 			
-			url = "https://uniroomtn.herokuapp.com/nl/"+ frase;
+			url = "https://uniroomtn.herokuapp.com/nl?frase="+ frase;
 			$.getJSON(url, function (data) {
 				if(data == "Cannot GET /"){
 					$("#command_table").append("<tr><td>Output non disponibile</td><td></td><td></td></tr>");
