@@ -29,10 +29,9 @@ function showCommand(){
 function go(){
 	let url;
 	let q = document.getElementById("inserisci").value;
-	console.log("q: "+q);
 	let geo = document.getElementById("geoloc").value;
 	if (geo == true)
-		url = "result.html?geoloc=true";
+		url = "result.html?geoloc=true&q="+q;
 	//prima bisogna parsare la q e poi aggiungere il parametro polo/aula all'url
 	else
 		url = "result.html?q="+q;
