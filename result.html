@@ -171,7 +171,7 @@
 		var geoloc = getQueryVariable_geoloc(window.location.href);
 		if (frase != null) {
 			
-			
+			console.log("Frase: "+frase);
 			url = "https://uniroomtn.herokuapp.com/nl?frase="+ frase;
 			$.getJSON(url, function (data) {
 				if(data == "Nessuna aula disponibile al momento"){
