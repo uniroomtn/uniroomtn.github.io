@@ -179,7 +179,7 @@
 					$("#command_table").append("<tr><td>Nessuna aula disponibile al momento</td><td></td><td></td></tr>");
 				}
 				else if(data == "Cannote GET /"){
-					$("#command_table").append("<tr><td>Input non valido!</td><td></td><td></td></tr>");
+					location.href = "index.html?q=dc";
 				}
 				else{
 					$.each(data, function (key, val) {
