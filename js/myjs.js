@@ -1,5 +1,5 @@
 
-var possibilities = ["povo","economia","lettere","filosofia","mesiano",
+var possibilities = ["povo","Povo","economia","lettere","filosofia","mesiano",
 					"ingegneria","giurisprudenza","sociologia","scienze cognitive",
 					"giuri","socio","help"];
 
