@@ -243,11 +243,12 @@
 		//script per caricare il titolo
 		var polo = getQueryVariable_q(window.location.href);
 		//polo = polo.replace("%20", " ");
-		if(polo !== null) {
+		if(polo != null) {
 			polo = polo.replace("%20", " ");
 			var name = "Risultati per: " + polo;
 			
 		} else {
+			console.log("Oh no!");
 			var name = "Tentativo di utilizzo geolocalizzazione";
 		}
 		document.getElementById("nome_polo").innerHTML = name;
