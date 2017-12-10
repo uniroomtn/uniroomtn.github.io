@@ -175,7 +175,10 @@
 			url = "https://uniroomtn.herokuapp.com/nl?frase="+ frase;
 			$.getJSON(url, function (data) {
 				if(data == "Nessuna aula disponibile al momento"){
-					$("#command_table").append("<tr><td>Output non disponibile</td><td></td><td></td></tr>");
+					$("#command_table").append("<tr><td>Nessuna aula disponibile al momento</td><td></td><td></td></tr>");
+				}
+				else if(data == "Cannote GET /"){
+					$("#command_table").append("<tr><td>Input non valido!</td><td></td><td></td></tr>");
 				}
 				else{
 					$.each(data, function (key, val) {
