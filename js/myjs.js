@@ -83,13 +83,8 @@ function getQueryVariable_q(url_string) {
 	var url = new URL(url_string);
 	var query = url.searchParams.get("q");
 	if(query)
-		if(contains(possibilities,query))
-			return query;
-		else if (query === "dc")
-			return query;
-		else
-			return null;
-	return null;
+		return query;
+	else return null;
 }
 
 function getQueryVariable_geoloc(url_string) {
