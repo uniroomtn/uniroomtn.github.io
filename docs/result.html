@@ -167,29 +167,15 @@
 	<script type="text/javascript">	
 		let url;
 		//script per creare la tabella degli orari
-		var sede = getQueryVariable_q(window.location.href);
+		var frase = getQueryVariable_q(window.location.href);
 		var geoloc = getQueryVariable_geoloc(window.location.href);
-		if (sede != null) {
-			sede = sede.replace("%20", " ");
-			switch (sede) {
-				case "povo": case "Povo": sede = "E0503"; break;
-				case "economia": case "Economia": sede = "E0101"; break;
-				case "lettere": case "Lettere": sede = "E0801"; break;
-				case "filosofia": case "Filosofia": sede = "E0801"; break;
-				case "mesiano": case "Mesiano": sede = "E0301"; break;
-				case "ingegneria": case "Ingegneria": sede = "E0301"; break;
-				case "giurisprudenza": case "Giurisprudenza": sede = "E0201"; break;
-				case "sociologia": case "Sociologia": sede = "E0601"; break;
-				case "scienze cognitive": case "Science cognitive": sede = "E0705"; break;
-				case "giuri": case "Giuri": sede = "E0201"; break;
-
-				case "socio": case "Socio": sede = "E0601"; break;
-				case "help": case "Help": location.href = "index.html?q=help";
-			}
-			url = "https://uniroomtn.herokuapp.com/sede/"+ sede;
+		if (frase != null) {
+			
+			
+			url = "https://uniroomtn.herokuapp.com/nl/"+ frase;
 			$.getJSON(url, function (data) {
-				if(data == "Nessuna aula disponibile al momento"){
-					$("#command_table").append("<tr><td>Nessuna aula libera</td><td></td><td></td></tr>");
+				if(data == "Cannot GET /"){
+					$("#command_table").append("<tr><td>Output non disponibile</td><td></td><td></td></tr>");
 				}
 				else{
 					$.each(data, function (key, val) {
@@ -255,7 +241,8 @@
 		var polo = getQueryVariable_q(window.location.href);
 		//polo = polo.replace("%20", " ");
 		if(polo !== null) {
-			var name = "Aule libere presso: " + polo;
+			polo = polo.replace("%20", " ");
+			var name = "Risultati per: " + polo;
 			
 		} else {
 			var name = "Tentativo di utilizzo geolocalizzazione";
