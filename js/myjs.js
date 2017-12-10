@@ -29,6 +29,7 @@ function showCommand(){
 function go(){
 	let url;
 	let q = document.getElementById("inserisci").value;
+	console.log("q: "+q);
 	let geo = document.getElementById("geoloc").value;
 	if (geo == true)
 		url = "result.html?geoloc=true";
