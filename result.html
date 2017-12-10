@@ -237,17 +237,13 @@
 		else {
 			location.href = "index.html?q=dc";
 		}
-	</script>
-
-	<script type="text/javascript">
 		//script per caricare il titolo
-		var polo = getQueryVariable_q(window.location.href);
-		var x="Povo" + polo;
+		var x="Povo: " + frase;
 		console.log(x);
 		//polo = polo.replace("%20", " ");
-		if(polo != null) {
-			polo = polo.replace("+", " ");
-			var name = "Risultati per: " + polo;
+		if(frase != null) {
+			frase = frase.replace("+", " ");
+			var name = "Risultati per: " + frase;
 			console.log("Oh si!");
 			
 		} else {
@@ -256,6 +252,7 @@
 		}
 		document.getElementById("nome_polo").innerHTML = name;
 	</script>
+
 </body>
 
 </html>
