@@ -1,5 +1,5 @@
 
-var possibilities = ["povo","Povo","economia","lettere","filosofia","mesiano",
+var possibilities = ["povo","economia","lettere","filosofia","mesiano",
 					"ingegneria","giurisprudenza","sociologia","scienze cognitive",
 					"giuri","socio","help"];
 
@@ -84,7 +84,7 @@ function getQueryVariable_q(url_string) {
 	var query = url.searchParams.get("q");
 	if(query)
 		return query;
-	else return null;
+	return null;
 }
 
 function getQueryVariable_geoloc(url_string) {
