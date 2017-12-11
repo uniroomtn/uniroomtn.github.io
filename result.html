@@ -167,15 +167,19 @@
 	<script type="text/javascript">	
 		let url;
 		//script per creare la tabella degli orari
-		var frase = getQueryVariable_q(window.location.href);
-		var geoloc = getQueryVariable_geoloc(window.location.href);
+		var frase = getQueryVariable(window.location.href,"q");
+		var geoloc = getQueryVariable(window.location.href,"geoloc");
 		console.log("Frase: "+frase);
 		if (frase != null) {
 			
-			
+			if (frase == "help")
+				location.href = "index.html?q=help";
 			url = "https://uniroomtn.herokuapp.com/nl?frase="+ frase;
 			$.getJSON(url, function (data) {
-				if(data == "Nessuna aula disponibile al momento"){
+				if(data.indexOf("http")){
+					location.href = data;
+				}
+				else if((data == "Nessuna aula disponibile al momento")||(data == null)||(data == undefined)){
 					$("#command_table").append("<tr><td>Nessuna aula disponibile al momento</td><td></td><td></td></tr>");
 				}
 				else if(data == "Errore!"){
@@ -212,7 +216,11 @@
 				.then(ris => {
 					let data = ris.json();
 					data.then(result => {
-						var name = "Aule libere presso: " + result[0].sede;
+						console.log(result);
+						if(result == "Nessuna aula disponibile al momento")
+							var name = "Nessuna aula libera vicino a te";
+						else 
+							var name = "Aule libere presso: " + result[0].sede;
 						document.getElementById("nome_polo").innerHTML = name;
 						$.each(result, function (key, val) 
 							{

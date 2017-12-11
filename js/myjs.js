@@ -1,16 +1,7 @@
-
+let myurl;
 var possibilities = ["povo","economia","lettere","filosofia","mesiano",
 					"ingegneria","giurisprudenza","sociologia","scienze cognitive",
 					"giuri","socio","help"];
-
-function contains(arr, element) {
-	for (var i = 0; i < arr.length; i++) {
-		if (arr[i] === element) {
-		return true;
-		}
-	}
-	return false;
-}
 
 function delay(t) {
 	return new Promise(function(resolve) { 
@@ -22,6 +13,7 @@ function showCommand(){
 	console.log("showCommand")
 	var table = document.getElementById("table_div");
 	table.style.visibility = "visible";
+	return table.style.visibility;
 
 }
 
@@ -35,7 +27,7 @@ function go(){
 	//prima bisogna parsare la q e poi aggiungere il parametro polo/aula all'url
 	else
 		url = "result.html?q="+q;
-
+	myurl = url;
 	location.href = url;
 }
 
@@ -48,8 +40,17 @@ function getQueryVariable(url_string,param) {
 	return null;
 }
 
-//Non utilizzata
-function getLocation() {
+/*function contains(arr, element) {
+	for (var i = 0; i < arr.length; i++) {
+		if (arr[i] === element) {
+		return true;
+		}
+	}
+	return false;
+}*/
+
+
+/*function getLocation() {
 	return new Promise(
 		function(resolve,reject){
 			if (navigator.geolocation) {
@@ -64,7 +65,7 @@ function getLocation() {
 	);
 }
 
-//Non utilizzata
+
 function showPosition(position) {
 	return new Promise(
 		function(resolve,reject){
@@ -78,7 +79,7 @@ function showPosition(position) {
 	);
 }
 
-//funzione per prendere la query inserita dall'utente
+
 function getQueryVariable_q(url_string) {
 	var url = new URL(url_string);
 	var query = url.searchParams.get("q");
@@ -93,6 +94,5 @@ function getQueryVariable_geoloc(url_string) {
 	if(query)
 		return query;
 	return null;
-	//alert('Query Variable ' + query + ' not found');
-}
+}*/
 
