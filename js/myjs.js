@@ -1,4 +1,3 @@
-let myurl;
 var possibilities = ["povo","economia","lettere","filosofia","mesiano",
 					"ingegneria","giurisprudenza","sociologia","scienze cognitive",
 					"giuri","socio","help"];
@@ -13,7 +12,8 @@ function showCommand(){
 	console.log("showCommand")
 	var table = document.getElementById("table_div");
 	table.style.visibility = "visible";
-	return table.style.visibility;
+	let tmp = table.style.visibility;
+	return tmp;
 
 }
 
@@ -39,6 +39,7 @@ function getQueryVariable(url_string,param) {
 		return query;
 	return null;
 }
+
 
 /*function contains(arr, element) {
 	for (var i = 0; i < arr.length; i++) {
@@ -95,4 +96,4 @@ function getQueryVariable_geoloc(url_string) {
 		return query;
 	return null;
 }*/
-
+module.exports = {getQueryVariable, showCommand, go};
